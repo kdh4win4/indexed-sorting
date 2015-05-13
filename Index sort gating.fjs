@@ -1,0 +1,37 @@
+/** --- Iterate samples --- **/
+
+var samples = workspace.samples;
+var size = samples.length;
+
+for (var i=0; i<size; i++)
+{
+	var sample = workspace.samples[i];
+	var fields = [];	
+	console.log(sample.name);
+
+	/** --- Go through all of the index sorting keywords and compile them --- **/
+	for (var j=1; j<8; j++)
+	{
+		var keyName = "INDEX SORTING LOCATIONS_"+j;
+		var locationsKey = sample.keywords[keyName];
+		if (!locationsKey)
+			break;
+		var lastindex = locationsKey.lastIndexOf(";");
+		var usableStr = locationsKey.substring(0, lastindex);
+		fields = fields.concat(usableStr.split(";"));
+		/** fields = fields.replace(", ", ""); **/
+	}
+
+	console.log("Item count: " + fields.length);
+	console.log("Items: " + fields);
+
+	/** --- Create a gate for each cell, with the well location as the name --- **/
+	for (var j=0; j<fields.length; j++)
+	{
+		var field = fields[j];
+		var begin = j;
+		var end = j+1;
+		var gate = sample.gating.range(field, "Event #", begin, end);
+	}
+	gate.update();
+}
