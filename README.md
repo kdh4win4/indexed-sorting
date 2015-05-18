@@ -1,4 +1,4 @@
-# index-sorting
+# indexed-sorting
 Compiles index sorting keywords and creates a gate for each cell, with the well location as the name.
 
 1. HOW TO USE THIS FLOWJO SCRIPT:
