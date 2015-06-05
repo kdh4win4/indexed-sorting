@@ -1,12 +1,11 @@
 # indexed-sorting
 Compiles index sorting keywords and creates a gate for each cell, with the well location as the name.
 
-I. HOW TO USE THIS FLOWJO SCRIPT:
-Download and save this script.
-In FlowJo version 10.0.8, load in your index-sorted data.
-Go to Tools - Cytometry- and Open the Script Editor
-At the bottom of the script editor, click the 'Open Script' icon 
-Navigate to the script and open it.  
+I. HOW TO USE THIS FLOWJO SCRIPT: 
+Download and save this script by clicking 'download zip' above.   
+In FlowJo version 10.0.8, load in your index-sorted data.   
+Go to Tools - Cytometry- and Open the Script Editor   
+At the bottom of the script editor, click the 'Open Script' icon Navigate to the script and open it.
 Click on the group with the index sorted data and then click 'Run' in the Script Editor.
 
 Note: If you edit the script, remember to save it (using the button next to 'open script')
