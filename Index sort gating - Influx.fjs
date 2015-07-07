@@ -1,0 +1,50 @@
+/** --- Identify Keyword for well positions, specific to file format convention --- **/
+var keyName = "INDEXSORTPOSITIONS";			
+
+/** --- Identify Parameters used for sorting, specific to file format convention --- **/
+var x_param = "Tray X";						
+var y_param = "Tray Y";
+
+/** --- Set to adjust gate delta, larger then needed but handy...--- **/
+var delta = 100; 	
+
+var sample_size = workspace.samples.length;
+
+/** --- For Each sample ...--- **/
+for (var h=0; h<sample_size; h++)
+{
+
+  var sample = workspace.samples[h];
+	var keyArray = sample.keywords[keyName].split(",");
+	var size = keyArray.length;
+
+/** --- For Each keyword triplet, well id, x, y, create a gate--- **/
+	for (var i=0; i<size; i++)
+	{
+    /** --- gate name --- **/
+		var field 	= 	keyArray[i];
+		
+		/** --- x axis positions --- **/
+		var x 		  = 	keyArray[i+1];
+		var xmin 	  = 	x-delta;
+		var xmax  	= 	math.sum(x,delta);
+	
+	  /** --- y axis positions --- **/
+		var y 		= 	keyArray[i+2];
+		var ymin 	= 	y-delta;
+		var ymax 	=	math.sum(y,delta)
+
+		var gate 	= 	sample.gating.rectangle(field, 
+		                                      x_param, 
+		                                      y_param, 
+		                                      xmin, 
+		                                      xmax, 
+		                                      ymin,
+		                                      ymax);
+		i++;
+		i++;
+	}
+/** --- Calculate gates --- **/
+	gate.update();
+
+}
