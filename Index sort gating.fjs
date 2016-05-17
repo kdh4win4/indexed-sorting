@@ -29,8 +29,8 @@ for (var i=0; i<size; i++)
 	for (var j=0; j<fields.length; j++)
 	{
 		var field = fields[j];
-		var begin = j;
-		var end = j+1;
+		var begin = j+0.5;
+		var end = j+1.5;
 		var gate = sample.gating.range(field, "Event #", begin, end);
 	}
 	gate.update();
